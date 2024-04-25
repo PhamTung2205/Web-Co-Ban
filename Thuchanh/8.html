@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài 8</title>
+    <style> 
+        td{
+            border: #333 solid 1px;
+            width: 100px;
+        }
+
+        .content{
+            margin-top: 20px;
+            border: #333 solid 1px;
+            padding: 10px;
+            width: 500px;
+        }
+        .fullname{
+            display: flex;
+        }
+        #fname{
+            width: 200px;
+            margin: 10px;
+        }
+        .Name{
+            display: flex;
+        }
+        #name{
+            width: 200px;
+            margin: 10px;
+        }
+        .datetime{
+            display: flex;
+        }
+        #date{
+            width: 200px;
+            margin: 10px;
+        }
+        .gia{
+            display: flex;
+        }
+        #gia{
+            width: 200px;
+            margin: 10px;
+        }
+        .button{
+            display: flex;
+            justify-content: flex-end;
+        }
+        .button>input{
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <table style="border: #333 solid 1px;" id="tbl">
+        <tr>
+            <td>STT</td>
+            <td>Tên VXL</td>
+            <td>Hãng sx</td>
+            <td>Ngày ra mắt</td>
+            <td>Giá (vnđ)</td>
+        </tr>
+    </table>
+    <form action="">
+        <div class="content">
+            <div class="fullname">
+                <p>Tên VXL :</p>
+                <input type="text" name="fname" id="fname">
+            </div>
+            <div class="Name">
+                <p>Hãng :</p>
+                <input type="text"name="name" id="name">
+            </div>
+            <div class="datetime">
+                <p>Ngày ra mắt : </p>
+                <input type="date" name="date" id="date">
+            </div>
+            <div class="gia">
+                <p>Giá</p>
+                <input type="text"name="gia"id="gia">
+            </div>
+            <div class="button">
+                <input onclick="nhap()" type="button" name="them" id="them" value="Thêm">
+                <input type="reset" name="huy" id="huy">
+            </div>
+        </div>
+    </form>
+    <script>
+       
+
+        function Themdulieu(){
+            var tbl =document.getElementById("tbl");
+            var Ten=document.getElementById("fname");
+            var hang = document.getElementById("name");
+            var ngay = document.getElementById("date");
+            var gia = document.getElementById("gia");
+
+            
+            var sanpham = (new SanPham(Ten.value,hang.value,ngay.value,gia.value))
+            
+            for(var i=1;i<tbl.rows.length;i++){
+                var r = tbl.rows[i].cells;
+                if(sanpham.compare(new SanPham(r[1].innerText,r[2].innerText,r[3].innerText,r[4].innerText))){
+                    alert("Thông tin sản phẩm đã tồn tại trong bảng");
+                    return;
+                }
+                
+            }
+
+            if(checkgia()){
+            var row =tbl.insertRow(-1 );
+            var cell1=row.insertCell(0);
+            var cell2=row.insertCell(1);
+            var cell3=row.insertCell(2);
+            var cell4=row.insertCell(3);
+            var cell5=row.insertCell(4);
+
+            
+            cell1.innerHTML=tbl.rows.length-1;
+            cell2.innerHTML=document.getElementById("fname").value;
+            cell3.innerHTML=document.getElementById("name").value;
+            cell4.innerHTML=document.getElementById("date").value;
+            
+                cell5.innerHTML=chinhgia(document.getElementById("gia").value);
+            }
+        
+    }
+        function nhap(){
+           
+            var tbl =document.getElementById("tbl");
+            var Ten=document.getElementById("fname");
+            var hang = document.getElementById("name");
+            var ngay = document.getElementById("date");
+            var gia = document.getElementById("gia");
+
+            var loi = "Các lỗi hiện có là :\n";
+            var kt = true;
+            if(Ten.value.trim()==""){
+                loi +="+ Để trống Tên\n";
+                kt=false;
+            }
+            if(hang.value.trim()==""){
+                loi +="+ Để trống Hãng\n";
+                kt=false;
+            }
+            if(ngay.value.trim()==""){
+                loi +="+ Để trống ngày\n";
+                kt =false;
+            }
+            if(gia.value.trim()==""){
+                loi +="+ Để trống giá\n";
+                kt=false;
+            }
+            if(!kt){
+                alert(loi);
+                return;
+            }
+            
+            var ngaynhap=document.getElementById("date").value;
+            var ngay = new Date(ngaynhap);
+            var time = new Date();
+            if(ngay.getFullYear()<time.getFullYear()){
+                Themdulieu();
+            }
+            else if(ngay.getFullYear()==time.getFullYear()){
+                if(ngay.getMonth()==time.getMonth()){
+                    if(ngay.getDate()<=time.getDate()){
+                        Themdulieu();
+                    }
+                    else{
+                        alert("+ Ngày nhập phải nhỏ hơn ngày hiện tại")
+                    }
+                }
+                else if(ngay.getMonth()<time.getMonth()){
+                    if(ngay.getDate()<=31){
+                        Themdulieu();
+                    }
+
+                }
+                else{
+                    alert("+ Ngày nhập phải nhỏ hơn ngày hiện tại")
+                    }
+            }
+            else{
+                alert("+ Ngày nhập phải nhỏ hơn ngày hiện tại")
+            }
+
+            
+            
+            
+        }
+
+        function chinhgia( gia){
+            var a = "";
+            gia = parseInt(gia);
+            while(gia>1000){
+                var tg = gia%1000 ;
+                tg = tg + "";
+                while(tg.length < 3){
+                    tg = "0" + tg;
+                }
+                tg = "." + tg;
+                a= tg+ a;
+                gia = parseInt(parseInt(gia)/1000);
+            }
+            a= gia +a;
+            return a;
+        }
+
+        //Check giá phải lớn hơn 0 
+        function checkgia(){
+            var gia = document.getElementById("gia").value;
+            var Gia = parseInt(gia);
+            var check =true
+            if(Gia<=0){
+                alert("Giá phải lớn hơn 0 , mời nhập lại giá");
+                check=false;
+            }
+            return check;
+        }
+        
+        function SanPham(ten,hang,ngayRM,gia){
+            this.name =ten;
+            this.hang = hang;
+            this.ngayRM = ngayRM;
+            this.price = gia;
+            this.compare = function(sp2){
+                if(this.name == sp2.name && this.hang == sp2.hang){
+                    return true;
+                }else{
+                    return false;
+                }
+            }
+            return this;
+        }
+       
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,153 @@
+body{
+    margin: 0px;
+}
+.header{
+    padding: 10px;
+    background-color: aqua;
+    
+}
+
+
+.menu{
+    background-color: rgb(97, 217, 217);
+    display: flex;
+
+    justify-content: flex-end;     
+}
+.menu-content{
+    list-style: none;
+    display:flex;
+    background-color: rgb(97, 217, 217);
+    padding:  0px;
+    margin: 0px;
+    justify-content: space-between;
+}
+a{
+    display: block;
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+    color: black;
+    z-index: 2;
+    padding: 10px 0px;
+    width: 160px;
+    height: 20px;
+    background-color: rgb(97, 217, 217);
+}
+.drop-content a{
+    display: flex;
+    margin: 0px;
+    justify-content: center;
+    background-color: #0cc9a6;
+    
+    
+}
+a:hover{
+    background-color: antiquewhite;
+
+}
+
+#search-text:hover{
+    background-color: aqua;
+}
+
+.drop-content{
+    display: none;
+   
+}
+.drop:hover .drop-content{
+    display: block;            
+}
+.drop>a{
+    display: flex;
+    justify-content: center ;
+            
+}
+
+.timkiem>p{
+    margin:20px 0px 0px 0px ;
+   
+}
+
+#search-text{
+    width: 200px;
+    height: 20px;
+    margin-bottom: 10px;
+    
+}
+#submit{
+    width: 50px;
+    height: 20px;
+    margin: 0px 5px;
+}
+
+.content{
+    display: flex;            
+}
+.main-content>img{
+    margin: 10px;
+    border: black solid 2px;
+    
+    
+}
+
+.footer{
+    padding: 10px;
+    background-color: #0cc9a6;
+    font-size: 18px;
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    justify-content: center;
+}
+
+.col-1 {width: 8.33%;}
+.col-2 {width: 16.66%;}
+.col-3 {width: 25%;}
+.col-4 {width: 33.33%;}
+.col-5 {width: 41.66%;}
+.col-6 {width: 50%;}
+.col-7 {width: 58.33%;}
+.col-8 {width: 66.66%;}
+.col-9 {width: 75%;}
+.col-10 {width: 83.33%;}
+.col-11 {width: 91.66%;}
+.col-12 {width: 100%;}
+
+@media only screen and (max-width:768px){
+    [class*="col-"]{
+            width: 100%;  
+        }     
+
+        .header>h1{
+            padding: 10px;
+            margin: 0px;
+        }
+        .header{
+            padding: 0px;
+        }
+        .menu-content{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .menu{
+            justify-content: center;
+        }
+        
+        a{
+            width: 1000px;
+        }
+        .timkiem{
+            display: flex;
+            margin-left: 15px;
+        }
+        .search{
+            margin: 15px;
+        }
+        .content{
+            flex-direction: column;
+            
+        }
+        
+
+        
+    }

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .content{
+            margin-top: 20px;
+            border: #333 solid 1px;
+            padding: 10px;
+            width: 500px;
+        }
+        .fullname{
+            display: flex;
+        }
+        #fname{
+            width: 200px;
+            margin: 10px;
+        }
+        .Name{
+            display: flex;
+        }
+        #name{
+            width: 200px;
+            margin: 10px;
+        }
+        .datetime{
+            display: flex;
+        }
+        #date{
+            width: 200px;
+            margin: 10px;
+        }
+        .gia{
+            display: flex;
+        }
+        #gia{
+            width: 200px;
+            margin: 10px;
+        }
+        .button{
+            display: flex;
+            justify-content: flex-end;
+        }
+        .button>input{
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <form action="Xuly.aspx" method="get" onsubmit="return loi();">
+        <div class="content">
+            <div class="fullname">
+                <p>Tên VXL :</p>
+                <input type="text" name="fname" id="fname">
+            </div>
+            <div class="Name">
+                <p>Hãng :</p>
+                <input type="text"name="name" id="name">
+            </div>
+            <div class="datetime">
+                <p>Ngày ra mắt : </p>
+                <input type="date" name="date" id="date">
+            </div>      
+            <div class="gia">
+                <p>Giá</p>
+                <input type="text"name="gia"id="gia">
+            </div>  
+            <div class="button">
+                <input  type="submit" name="them" id="them" value="Thêm">
+                <input type="reset" name="huy" id="huy">
+            </div>
+        </div>
+    </form>
+    <script>
+        function loi() {
+            var Ten = document.getElementById("fname");
+            var hang = document.getElementById("name");
+            var ngay = document.getElementById("date");
+            var gia = document.getElementById("gia");
+
+            var loi = "Các lỗi hiện có là :\n";
+            var kt = true;
+            if (Ten.value.trim() == "") {
+                loi += "+ Để trống Tên\n";
+                kt = false;
+            }
+            if (hang.value.trim() == "") {
+                loi += "+ Để trống Hãng\n";
+                kt = false;
+            }
+            if (ngay.value.trim() == "") {
+                loi += "+ Để trống ngày\n";
+                kt = false;
+            }
+            if (gia.value.trim() == "") {
+                loi += "+ Để trống giá\n";
+                kt = false;
+            }
+
+           var ngaynhap = document.getElementById("date").value;
+            var ngay = new Date(ngaynhap);
+            var time = new Date();
+            if (ngay.getFullYear() >= time.getFullYear())
+            {
+                if (ngay.getMonth() == time.getMonth()) {
+                    if (ngay.getDate() > time.getDate()) {
+                        loi += "+Ngày không được lơn hơn ngày hiện tại\n";
+                        kt = false;
+                    }
+                }
+                if (ngay.getMonth() > time.getMonth()) {
+                    loi += "+ Ngày không được lơn hơn ngày hiện tại";
+                    kt = false;
+                }
+            }
+            var gia = document.getElementById("gia").value;
+            var Gia = parseInt(gia);
+            var check = true
+            if (Gia <= 0) {
+                loi +="+ Giá phải lớn hơn 0 , mời nhập lại giá\n";
+                kt = false;
+            }
+
+            if (!kt) {
+                alert(loi);
+                return false;
+            }
+        }
+    </script>
+</body>
+</html>

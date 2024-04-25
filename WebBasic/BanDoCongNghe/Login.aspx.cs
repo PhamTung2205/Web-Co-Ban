@@ -1,0 +1,44 @@
+﻿using BanDoCongNghe.App_Code.Services;
+using Models.User;
+using System;
+using System.Web;
+namespace BanDoCongNghe
+{
+    public partial class Login : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (Request.HttpMethod == "POST")
+            {
+                string username = Request.Form["username"];
+                string password = Request.Form["password"];
+                int age = int.Parse(Request.Form["age"]);
+                bool isRemember = Request.Form["remember"] == "on";
+                if (username != null && password != null&&2024-age>17)
+                {
+                    User newUser = UserService.gI().checkLogin(username, password);
+                    if (newUser != null)
+                    {
+                        Session["User"] = newUser;
+                        if (isRemember)
+                        {
+                            HttpCookie user = new HttpCookie("User");
+                            user["Username"] = username;
+                            user["Password"] = password;
+                            user["IsRemember"] = "1";
+                            user.Expires = DateTime.Now.AddDays(30);
+                            Response.Cookies.Add(user);
+                        }
+                        Response.Redirect("index.aspx");
+                    }
+                    else
+                    {
+                        contentErr.InnerText = "Phiên đăng nhập đã hết hạn!";
+                        errContainer.Style["display"] = "flex";
+                    }
+                }
+
+            }
+        }
+    }
+}

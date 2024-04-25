@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài 5</title>
+    <style>
+        .content{
+            border: black solid 1px;
+            width: 300px;
+            padding: 10px;
+            
+        }
+        .chuoi{
+            display: flex;
+            
+        }
+        .chuoi>input{
+            width: 200px;
+            height: 20px;
+            margin: 10px;
+            margin-left: 35px;
+        }
+        .danhsach{
+            display: flex;
+        }
+        #dldanhsach{
+            width: 150px;
+            height: 25px;
+            margin: 10px;
+        }
+        .button{
+            display: flex;
+            justify-content: flex-end;
+        }
+        .button>input{
+            height: 30px;
+            margin:0px 10px;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="content">
+        <form action="">
+    <div class="chuoi"> 
+        <p>Chuỗi : </p>
+        <input id="dlvao" type="text"name="dlvao">
+    </div>
+    <div class="danhsach">
+        <p>Danh sách : </p>
+        <select id="dldanhsach">
+        </select>
+    </div>
+    <div class="button">
+        <button type="button" id="thuchien" onclick="hien()">Thực Hiện</button>
+        <input id="huy" type="reset"value="Hủy">
+    </div>
+</div>
+</form>
+<script>
+        select = document.querySelector("#dldanhsach")
+        function hien(){
+            var dlvao= document.querySelector("#dlvao").value;
+            var arr =dlvao.split(",");
+
+            if(dlvao.trim()===''){
+                alert("Không có dữ liệu.Yêu cầu nhập nội dung")
+                document.querySelector("#dlvao").focus();
+            }
+
+                    for(var i=0;i<arr.length;i++){
+                var check = true;
+                for(var j = 0;j < select.options.length;j++){
+                    if(arr[i].trim().toUpperCase() == select.options[j].text.trim().toUpperCase()){
+                        check = false;
+                        break;
+                    }
+                }
+                if(!check || arr[i].trim() == '') continue;
+                var opt = document.createElement("option");
+                opt.text = arr[i].trim();
+                opt.value = arr[i].trim();
+                select.appendChild(opt);
+            }
+        }
+        function chose(){
+        var txtNoti = select.options[select.selectedIndex].text;
+        alert("Bạn đã chọn " + txtNoti);
+    }
+    select.addEventListener("change",chose);
+        
+</script>
+</body>
+</html>

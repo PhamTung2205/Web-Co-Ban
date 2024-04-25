@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Bài 11</title>
+    <style>
+        div{
+            display:flex;
+        }
+        form {
+            width: 300px;
+            padding: 20px;
+            margin:auto;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        input[type="text"]{
+            width:200px;
+            height: 30px;
+            margin:12px;
+            boder:2px;
+        }
+        input[type="number"] {
+            width: 200px;
+            height: 30px;
+            margin: 13px;
+            boder: 2px;
+        }
+
+
+        input[type="submit"] {
+            margin-left: 120px;
+            height: 30px;
+        }
+        
+    </style>
+</head>
+<body>
+    <form action="XuLy.aspx" method="post">
+        <div>
+            <p>Họ và tên :</p>
+            <input type="text" name="txtHoten" id="txtHoten" />
+        </div>
+        <div>
+            <p>Năm sinh :</p>
+            <input type="number" name="txtNamsinh" id="txtNamsinh" />
+        </div>
+        <div>
+            <p>Giới tính:</p>
+            <input type="text" name="txtGioitinh" id="txtGioitinh" />
+            
+        </div>
+        <div>
+            <input type="submit" name="btnSubmit" value="Gửi dữ liệu" />
+        </div>
+    </form>
+</body>
+</html>

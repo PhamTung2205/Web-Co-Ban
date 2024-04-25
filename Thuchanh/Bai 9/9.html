@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .content{
+            margin-top: 20px;
+            border: #333 solid 1px;
+            padding: 10px;
+            width: 500px;
+        }
+        .fullname{
+            display: flex;
+        }
+        #fname{
+            width: 200px;
+            margin: 10px;
+        }
+        .Name{
+            display: flex;
+        }
+        #name{
+            width: 200px;
+            margin: 10px;
+        }
+        .datetime{
+            display: flex;
+        }
+        #date{
+            width: 200px;
+            margin: 10px;
+        }
+        .gia{
+            display: flex;
+        }
+        #gia{
+            width: 200px;
+            margin: 10px;
+        }
+        .button{
+            display: flex;
+            justify-content: flex-end;
+        }
+        .button>input{
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <form action="https://localhost:44312/Xuly.aspx" method="post">
+        <div class="content">
+            <div class="fullname">
+                <p>Tên VXL :</p>
+                <input type="text" name="fname" id="fname">
+            </div>
+            <div class="Name">
+                <p>Hãng :</p>
+                <input type="text"name="name" id="name">
+            </div>
+            <div class="datetime">
+                <p>Ngày ra mắt : </p>
+                <input type="date" name="date" id="date">
+            </div>      
+            <div class="gia">
+                <p>Giá</p>
+                <input type="text"name="gia"id="gia">
+            </div>  
+            <div class="button">
+                <input  type="submit" name="them" id="them" value="Thêm">
+                <input type="reset" name="huy" id="huy">
+            </div>
+        </div>
+    </form>
+</body>
+</html>

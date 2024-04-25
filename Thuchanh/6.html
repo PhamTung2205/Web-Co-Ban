@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài 6</title>
+    <style>
+        .content{
+            border: #333 solid 1px;
+            padding:  10px;
+            width: 260px;
+        }
+        .ngaysinh{
+            display: flex;
+        }
+        #date{
+            margin: 10px;
+            width: 150px;
+            height: 20px;
+        }
+        .dlra{
+            display: flex;
+        }
+        #cung{
+            
+            margin: 12px;
+            margin-left: 43px;
+            width: 150px;
+            height: 20px;
+        }
+        .button{
+            display: flex;
+            justify-content: flex-end;
+            margin-right: 10px;
+        }
+        .button>input{
+            height: 30px;
+            margin:0px 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <form action="">
+        <div class="ngaysinh">
+            <p>Ngày Sinh : </p>
+            <input type="text" id="date"name="date" >
+        </div>
+        <div class="dlra">
+            <p>Cung : </p>
+            <input type="text" name="cung" id="cung"readonly>
+        </div>
+        <div class="button">
+            <input type="button" onclick="chon()"value="xem"></input>
+            <input type="reset" name="huy" id="huy"value="Xóa">
+        </div>
+    </div>
+</form>
+    <script>
+        function chon(){
+        var date= document.querySelector("#date").value;
+        var arr=date.split("/");
+        
+        if(date == ''){
+        document.getElementById("date").focus();
+        alert("Không được để trống mục ngày sinh!")
+    }
+    for(var a of arr){
+        a = a.trim();
+    }
+    if(arr.length != 3){
+        document.getElementById("date").focus();
+        alert("Chỉ được nhập 3 tham số ngày/tháng/năm sinh");
+    }
+    if(arr[0]<1||arr[0]>31){
+        document.getElementById("date").focus();
+        alert("Ngày không hợp lệ!");
+    }
+    if(arr[1]> 12 || arr[1] < 1){
+        document.getElementById("date").focus();
+        alert("Tháng sinh không hợp lệ!");
+    }
+    
+
+    var ngay = parseInt(arr[0], 10);
+    var thang = parseInt(arr[1], 10);
+    var nam = parseInt(arr[2], 10);
+    var cung = "";
+    if ((thang === 3 && ngay >= 21) || (thang === 4 && ngay <= 20)) {
+        cung = "Bạch dương";
+    }
+    if ((thang === 4 && ngay >= 21) || (thang === 5 && ngay <= 20)) {
+        cung = "Kim Ngưu";
+    }
+    if ((thang === 5 && ngay >= 21) || (thang === 6 && ngay <= 21)) {
+        cung = "Song tử";
+    }
+    if ((thang === 6 && ngay >= 22) || (thang === 7 && ngay <= 22)) {
+        cung = "Cự giải";
+    }
+    if ((thang === 7 && ngay >= 23) || (thang === 8 && ngay <= 22)) {
+        cung = "Sư tử";
+    }
+    if ((thang === 8 && ngay >= 23) || (thang === 9 && ngay <= 22)) {
+        cung = "Xử nữ";
+    }
+    if ((thang === 9 && ngay >= 23) || (thang === 10 && ngay <= 23)) {
+        cung = "Thiên bình";
+    }
+    if ((thang === 10 && ngay >= 24) || (thang === 11 && ngay <= 22)) {
+        cung = "Bọ cạp";
+    }
+    if ((thang === 11 && ngay >= 23) || (thang === 12 && ngay <= 21)) {
+        cung = "Nhân Mã";
+    }
+    if ((thang === 12 && ngay >= 22) || (thang === 1 && ngay <= 19)) {
+        cung = "Ma kết";
+    }
+    if ((thang === 1 && ngay >= 20) || (thang === 2 && ngay <= 18)) {
+        cung = "Bảo bình";
+    }
+    if ((thang === 9 && ngay >= 23) || (thang === 10 && ngay <= 23)) {
+        cung = "Thiên bình";
+    }
+    document.getElementById("cung").value = cung;
+    }
+    </script>
+</body>
+</html>

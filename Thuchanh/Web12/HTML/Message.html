@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #chat {
+            width:100%;
+            height:100%;
+            position: relative;
+            background-color: #fff;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #txtSubmit {
+            position: absolute;
+            bottom: 15%;
+            right: 5%;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #txtChat {
+            width: calc(100% - 40px);
+            height: 120px;
+            resize: none;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        #name{
+            display:none;
+        }
+    </style>
+</head>
+<body>
+    <form id="chat" action="../Message Sender.aspx"method="POST" onsubmit="return check();">
+        <textarea id="txtChat" name="txtChat" placeholder="Nhập tin nhắn của bạn" required="required"></textarea>
+        <input id="name" name="name" value=""/>
+        <input id="txtSubmit" type="submit" name="txtSubmit" value="Gửi tin nhắn" />
+    </form>
+    <script>
+        window.onload = function () {
+            document.getElementById("txtChat").focus();
+            var url = window.location.href.split('=')[1];
+            document.getElementById("name").value = url;
+            
+        }
+        function check() {
+            var txt = document.getElementById("txtChat").value;
+            txt = txt.replace(/</g, "&lt;");
+            txt = txt.replace(/>/g, "&gt;");
+            document.getElementById("txtChat").value = txt;
+            return true;                                 
+        }
+    </script>
+</body>
+</html>

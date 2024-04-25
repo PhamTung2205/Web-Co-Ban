@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=\, initial-scale=1.0">
+    <title>Bài 7</title>
+    <style>
+        .content{
+            border: black solid 1px;
+            width: 300px;
+        }
+        .list{
+            display: flex;
+        }
+        #ls_dsHang{
+            margin: 12px;
+            width: 30px;
+            height: 20px;
+        }
+        #hang{
+            display: flex;
+        }
+        #Themhang{
+            display: none;
+        }
+        .button{
+            display: flex;;
+            justify-content: flex-end;
+        }
+        input{
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <form action="">
+        <div class="content">
+            <div class="list">
+                <p>Danh sách Hãng sản xuất CPU </p>
+                <select name="ls_dsHang" id="ls_dsHang"></select>
+            </div>
+            <div id="Themhang">
+            <div id="hang">
+                <p>Hãng :</p>
+                <input type="text">
+            </div>
+            <div class="button">
+                <input type="button" name="luu" id="luu" value="Lưu">
+                <input type="reset"name="huy"id="huy"value="Hủy">
+            </div>
+        </div>
+        <div id="huythem">
+        <div class="button">
+            <input onclick="them()" type="button" name="them" id="them" value="Thêm" onclick="them()" >
+            <input type="reset"name="huy"id="huy"value="Hủy">
+        </div>
+    </div>
+        </div>
+    </form>
+    <script>
+        function them(){
+            document.getElementById("huythem").style.display = "none";
+            document.getElementById("Themhang").style.display = "block";
+        }
+        
+    </script>
+</body>
+</html>
