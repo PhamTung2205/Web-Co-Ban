@@ -6,12 +6,7 @@
             display:flex;
             justify-content:center;
         }
-        .container {
-            display: flex;
-            flex-direction: column;
-            height: 80vh;
-            width:46.6%;
-        }
+        
 
         .top-frames {
             display: flex; 

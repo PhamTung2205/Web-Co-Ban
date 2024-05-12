@@ -12,9 +12,8 @@ namespace BanDoCongNghe
             {
                 string username = Request.Form["username"];
                 string password = Request.Form["password"];
-                int age = int.Parse(Request.Form["age"]);
                 bool isRemember = Request.Form["remember"] == "on";
-                if (username != null && password != null&&2024-age>17)
+                if (username != null && password != null)
                 {
                     User newUser = UserService.gI().checkLogin(username, password);
                     if (newUser != null)

@@ -30,10 +30,7 @@
                 <div id="xoet"></div>
             </button>
         </div>
-        <div>
-            <input id="age" type="text" name="age"  placeholder="Nhập năm sinh" />
-            <label id="lbAge">Tuổi</label>
-        </div>
+        
         <div class ="group-option is-flex">
             <input type ="checkbox" class ="option" id="remember" name ="remember" checked/>
             <label class="option-text">Nhớ tôi cho lần đăng nhập tiếp theo</label>
