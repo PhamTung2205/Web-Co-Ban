@@ -2,67 +2,33 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=\, initial-scale=1.0">
-    <title>Bài 7</title>
-    <style>
-        .content{
-            border: black solid 1px;
-            width: 300px;
-        }
-        .list{
-            display: flex;
-        }
-        #ls_dsHang{
-            margin: 12px;
-            width: 30px;
-            height: 20px;
-        }
-        #hang{
-            display: flex;
-        }
-        #Themhang{
-            display: none;
-        }
-        .button{
-            display: flex;;
-            justify-content: flex-end;
-        }
-        input{
-            margin: 10px;
-        }
-    </style>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="7.css">
+    <title>bai7</title>
 </head>
 <body>
-    <form action="">
-        <div class="content">
-            <div class="list">
-                <p>Danh sách Hãng sản xuất CPU </p>
-                <select name="ls_dsHang" id="ls_dsHang"></select>
+    <div class="container">
+        <form action="#" method="post" class="form">
+            <div class="form-row">
+                <label class="form-label" for="ddlDanhsachhangsx">Danh sách Hãng sản xuất CPU:</label>
+                <select id="ddlDanhsachhangsx">
+                    
+                </select>
             </div>
-            <div id="Themhang">
-            <div id="hang">
-                <p>Hãng :</p>
-                <input type="text">
+            <div class="form-row show" id="hang">
+                <label class="form-label" for="txtHang">Hãng:</label>
+                <input type="text" id="txtHang">
             </div>
-            <div class="button">
-                <input type="button" name="luu" id="luu" value="Lưu">
-                <input type="reset"name="huy"id="huy"value="Hủy">
+            <div id="error"></div>
+
+            <div class="form-btn">
+                <input class="btn-input" type="button" value="Thêm" id="btnThem" onclick="themHangSX()">
+                <input class="btn-input show" type="button" value="Lưu" id="btnLuu" onclick="luuHangSX()">
+                <input class="btn-input" type="button" value="Huỷ" id="btnHuy" onclick="huy()">
             </div>
-        </div>
-        <div id="huythem">
-        <div class="button">
-            <input onclick="them()" type="button" name="them" id="them" value="Thêm" onclick="them()" >
-            <input type="reset"name="huy"id="huy"value="Hủy">
-        </div>
+        </form>
     </div>
-        </div>
-    </form>
-    <script>
-        function them(){
-            document.getElementById("huythem").style.display = "none";
-            document.getElementById("Themhang").style.display = "block";
-        }
-        
-    </script>
+    <script src="7.js"></script>
 </body>
 </html>
